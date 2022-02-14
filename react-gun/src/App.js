@@ -51,7 +51,30 @@ function App() {
     })
   }
 
-  return <div className="App"></div>
+  return (
+    <div style={{ padding: 30 }}>
+      <input
+        onChange={onChange}
+        placeholder="name"
+        name="name"
+        value={formState.name}
+      />
+      <input
+        onChange={onChange}
+        placeholder="Message"
+        name="message"
+        value={formState.message}
+      />
+      <button onClick={saveMessage}>Send Message</button>
+      {state.messages.map((message) => (
+        <div key={message.createdAt}>
+          <h2>{message.message}</h2>
+          <h3>From: {message.name}</h3>
+          <p>Date: {message.createdAt}</p>
+        </div>
+      ))}
+    </div>
+  )
 }
 
 export default App
